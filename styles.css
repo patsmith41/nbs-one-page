@@ -989,7 +989,7 @@ ul {
 
 /* About Hero */
 .about-hero {
-    background: linear-gradient(rgba(26, 42, 58, 0.3), rgba(26, 42, 58, 0.3)), url('d-4.png');
+    background: linear-gradient(rgba(26, 42, 58, 0.3), rgba(26, 42, 58, 0.3)), url('photos/family.jpg');
     background-size: cover;
     background-position: center;
 }
