@@ -325,7 +325,7 @@ ul {
     max-height: 800px;
     display: flex;
     align-items: center;
-    background: url('d-2.png');
+    background: url('d-8.png');
     background-size: cover;
     background-position: center;
     color: var(--white);
@@ -2582,3 +2582,4 @@ ul {
         gap: var(--spacing-sm);
     }
 }
+
