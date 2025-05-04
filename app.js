@@ -250,3 +250,33 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+// Add this to your existing app.js file
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize Ecwid with better checkout behavior
+    if (typeof Ecwid !== 'undefined') {
+        Ecwid.OnAPILoaded.add(function() {
+            // Scroll to checkout when it appears
+            Ecwid.OnPageLoaded.add(function(page) {
+                if (page.type == "CHECKOUT_PAGE") {
+                    setTimeout(function() {
+                        const checkoutEl = document.querySelector('.ecwid-checkout');
+                        if (checkoutEl) {
+                            checkoutEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                    }, 300);
+                }
+            });
+            
+            // Show mini cart when product is added
+            Ecwid.OnCartChanged.add(function(cart) {
+                if (cart.productsQuantity > 0) {
+                    // Update cart count
+                    const cartCountEl = document.querySelector('.cart-count');
+                    if (cartCountEl) {
+                        cartCountEl.textContent = cart.productsQuantity;
+                    }
+                }
+            });
+        });
+    }
+});

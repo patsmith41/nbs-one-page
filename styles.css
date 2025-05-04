@@ -2583,3 +2583,122 @@ ul {
     }
 }
 
+
+
+//* ===== START: Ecwid Product Grid Flexbox Fix ===== */
+
+/* Target the ROW container - Ecwid likely uses <tr> */
+#my-store-2700003 .ecwid-productBrowser-productsGrid-mainTable tr {
+    display: flex !important;
+    flex-wrap: wrap !important; /* Allow wrapping */
+    /* Add gap between items directly (more modern) */
+    gap: 2% !important; /* Creates 2% gap horizontally and vertically */
+     margin-bottom: 20px; /* Adjust if gap handles vertical space */
+}
+
+/* Target the CELL container - Adjust width based on flex basis */
+#my-store-2700003 td.ecwid-productBrowser-productsGrid-cell {
+    box-sizing: border-box !important;
+    /* Calculate basis for 3 columns with 2% gap: (100% - 2*2% gap) / 3 */
+    flex-basis: 32% !important;
+    /* Remove individual margins if using gap */
+    margin-right: 0 !important;
+    margin-bottom: 0 !important; /* Gap handles this now */
+     /* Override padding if needed, otherwise inherit */
+     /* padding: 10px !important; */
+}
+
+/* --- Responsive Adjustments for Flexbox --- */
+
+/* Tablet - 2 Columns */
+@media (max-width: 992px) {
+    #my-store-2700003 .ecwid-productBrowser-productsGrid-mainTable tr {
+         gap: 4% !important; /* Adjust gap if desired */
+    }
+    #my-store-2700003 td.ecwid-productBrowser-productsGrid-cell {
+        /* Calculate basis for 2 columns with 4% gap: (100% - 1*4% gap) / 2 */
+        flex-basis: 48% !important;
+    }
+}
+
+/* Mobile - 1 Column */
+@media (max-width: 767px) {
+     #my-store-2700003 .ecwid-productBrowser-productsGrid-mainTable tr {
+         gap: 0 !important; /* No horizontal gap needed */
+         row-gap: 20px !important; /* Only vertical gap */
+    }
+    #my-store-2700003 td.ecwid-productBrowser-productsGrid-cell {
+        flex-basis: 100% !important; /* Full width */
+        margin-bottom: 20px !important; /* Re-add bottom margin if row-gap isn't enough */
+    }
+}
+
+/* Optional: Ensure internal elements don't cause issues */
+#my-store-2700003 td.ecwid-productBrowser-productsGrid-cell div,
+#my-store-2700003 td.ecwid-productBrowser-productsGrid-cell table,
+#my-store-2700003 td.ecwid-productBrowser-productsGrid-cell img {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* ===== END: Ecwid Product Grid Flexbox Fix ===== */
+/* Even more aggressive grid overrides */
+#my-store-2700003 .ecwid-productBrowser-productsGrid-mainTable {
+    width: 100% !important;
+    table-layout: fixed !important;
+}
+
+#my-store-2700003 .ecwid-productBrowser-productsGrid-mainTable tr {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    width: 100% !important;
+    justify-content: space-between !important;
+}
+
+#my-store-2700003 td.ecwid-productBrowser-productsGrid-cell {
+    width: 32% !important;
+    flex: 0 0 32% !important;
+    margin-bottom: 20px !important;
+    box-sizing: border-box !important;
+    float: none !important;
+    display: block !important;
+}
+
+/* Clear any cellSpace elements that might disrupt layout */
+#my-store-2700003 td.ecwid-productBrowser-productsGrid-cellSpace {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+/* Checkout enhancement for in-page experience */
+.ecwid-checkout-enclosure {
+    background-color: var(--light-bg);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    padding: 30px;
+    margin: 40px auto;
+    max-width: 1000px;
+}
+
+/* Add visual separation for checkout areas */
+.ecwid-checkout-step {
+    background-color: #fff;
+    border-radius: var(--radius-md);
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-sm);
+}
+
+/* Smooth scroll to checkout when "Checkout" button is clicked */
+.ecwid-minicart-clickArea {
+    scroll-behavior: smooth;
+}
+
+/* Make checkout buttons match your site's style */
+.ecwid-checkout-button {
+    background: var(--primary-gradient) !important;
+    color: var(--white) !important;
+    font-family: var(--font-heading) !important;
+    border-radius: var(--radius-md) !important;
+}
