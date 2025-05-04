@@ -1,33 +1,30 @@
-<!-- checkout.html -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Checkout</title>
-    <!-- Add your CSS links etc. -->
-    <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Checkout | My Store</title>
   </head>
   <body>
-    <!-- Optional Header -->
+    <!-- 1) Placeholder for Ecwid’s cart/checkout -->
+    <div id="checkout-container"></div>
 
-    <main class="container" style="padding: 40px 0">
-      <h2 style="text-align: center; margin-bottom: 30px">Shopping Cart</h2>
-      <!-- Container for Ecwid content -->
-      <div id="ecwid-checkout"></div>
-      <div>
-        <script
-          data-cfasync="false"
-          type="text/javascript"
-          src="https://app.ecwid.com/script.js?2700003&data_platform=code&data_date=2025-04-23"
-          charset="utf-8"
-        ></script>
-        <script type="text/javascript">
-          Ecwid.init();
-          // Optional: Explicitly place the cart widget if needed.
-          // xCart("id=ecwid-checkout");
-        </script>
-      </div>
-    </main>
+    <!-- 2) Ecwid script (full-storefront embed) -->
+    <script
+      data-cfasync="false"
+      src="https://app.ecwid.com/script.js?2700003&data_platform=code"
+      charset="utf-8"
+    ></script>
 
-    <!-- Optional Footer -->
+    <!-- 3) Init + jump straight to cart → checkout -->
+    <script>
+      Ecwid.init();
+      Ecwid.OnAPILoaded.add(function () {
+        // Option A: show the Cart view
+        Ecwid.openPage("cart");
+        // or, to force the checkout flow immediately:
+        // Ecwid.Cart.gotoCheckout();
+      });
+    </script>
   </body>
 </html>
